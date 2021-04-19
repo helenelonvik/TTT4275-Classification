@@ -8,7 +8,7 @@ class1Data = load('class_1');
 class2Data = load('class_2');
 class3Data = load('class_3');
 
-NumTrain= 30;               
+NumTrain= 30;             
 NumTest = 20;
 NumTot = 50;
 
@@ -21,7 +21,7 @@ testSet = [class1Data(NumTrain+1:NumTot,:).', class2Data(NumTrain+1:NumTot,:).',
 
 % Defining initial variables
 C = 3;                          %Number of classes
-D = 4;                          %Number of the input vectors (features)
+D = 4;                          %Number / Dimention of the input vectors (features)
 
 % Defining variables
 alpha = 0.01;
