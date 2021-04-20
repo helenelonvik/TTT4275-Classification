@@ -85,5 +85,47 @@ title('MSE Gradient');
 %% Task 1c) 
 % Find the confusion matrix and the error rate for both the training and the test set.
 
+% Confusion matrix - training 
+confusionTrain = zeros(C);
+for k = 1:NumTrain
+    xk = [trainSet(:,k); 1];
+    
+    c = floor((k-1)/NumTrain * C) + 1;
+    tk = zeros(C, 1);
+    tk(c) = 1;
+    
+    zk = W*xk + w0;
+    gk = sigmoid(zk);
+    
+    [gMax, cMax] = max(gk);
+    confusionTrain(c, cMax) = confusionTrain(c, cMax) + 1;
+end
+% Error rate - training 
+errorRateTrain = 1 - trace(confusionTrain)/NumTrain;
+
+confusionTest = zeros(C);
+for k = 1:NumTest
+    xk = [testSet(:,k); 1];
+    
+    c = floor((k-1)/NumTest * C) + 1;
+    tk = zeros(C, 1);
+    tk(c) = 1;
+    
+    zk = W*xk + w0;
+    gk = sigmoid(zk);
+    [gMax, cMax] = max(gk);
+    confusionTest(c, cMax) = confusionTest(c, cMax) + 1;
+end
+% Error rate - training 
+errorRateTest = 1 - trace(confusionTest)/NumTest;
+
+figure(3)
+%plotConfusionMx(testLabels, predTest);
+title('Test Cases');
+
+figure(4)
+%plotConfusionMx(trainLabels, predTrain);
+title("Training Cases");
+
 
 

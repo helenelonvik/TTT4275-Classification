@@ -31,12 +31,8 @@ testSet = [dataClass1(NumTrainC+1:NumDataC,:).', dataClass2(NumTrainC+1:NumDataC
 
 % Defining variables
 alpha = 0.01;              % Tuned step factor - smallest possible MSE after training
-NumIterations = 3000;      % Breaking condition 
-                            %Obs: Could have used tol = 0.2 
-                            %(Stop when the last iteration did not improve the accuracy by
-                            %more than 2 percent) instead
-
-
+NumIterations = 3000;      % Breaking condition -  Obs: Could have used tol = 0.2>norm(grad)
+                                                
 MSEs = zeros(1, NumIterations);             % Training variable
 gradsMSE = zeros(1, NumIterations);         % Training variable
 
@@ -87,7 +83,45 @@ title('MSE Gradient');
 
 
 %% Task 1c) 
+% Find the confusion matrix and the error rate for both the training and the test set.
 
+% Confusion matrix - training 
+confusionTrain = zeros(C);
+for k = 1:NumTrain
+    c = floor((k-1)/NumTrain * C) + 1;
+    tk = zeros(C, 1);
+    tk(c) = 1;
+    
+    zk = W*x_k + w_0;
+    gk = sigmoid(zk);
+    [gMax, cMax] = max(gk);
+    confusionTrain(c, cMax) = confusionTrain(c, cMax) + 1;
+end
+% Error rate - training 
+errorRateTrain = 1 - trace(confusionTrain)/NumTrain;
+
+confusionTest = zeros(C);
+for k = 1:NumTest
+    c = floor((k-1)/NumTest * C) + 1;
+    tk = zeros(C, 1);
+    tk(c) = 1;
+    
+    xk = [testSet(:,k); 1];
+    zk = W*x_k + w_0;
+    gk = sigmoid(zk);
+    [gMax, cMax] = max(gk);
+    confusionTest(c, cMax) = confusionTest(c, cMax) + 1;
+end
+% Error rate - training 
+errorRateTest = 1 - trace(confusionTest)/NumTest;
+
+figure(3)
+%plotConfusionMx(testLabels, predTest);
+title('Test Cases');
+
+figure(4)
+%plotConfusionMx(trainLabels, predTrain);
+title("Training Cases");
 
 
 
