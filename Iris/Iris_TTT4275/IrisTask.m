@@ -12,6 +12,8 @@ dataClass1 = load('class_1');
 dataClass2 = load('class_2');
 dataClass3 = load('class_3');
 
+
+%Training and test indices 
 NumTrainC= 30;  
 NumTrain = NumTrainC * C;
 NumTestC = 20;
@@ -20,9 +22,13 @@ NumDataC = 50;
 NumData = NumDataC * C;
 
 
-% First 30 data points 
+% First 30 data points for training and the last 20 for testing
 trainSet = [dataClass1(1:NumTrainC,:).', dataClass2(1:NumTrainC,:).', dataClass3(1:NumTrainC,:).'];
 testSet = [dataClass1(NumTrainC+1:NumDataC,:).', dataClass2(NumTrainC+1:NumDataC,:).', dataClass3(NumTrainC+1:NumDataC,:).'];
+
+% Last 30 data points for testing and the last 30 for training
+% testSet = [dataClass1(1:NumTestC,:).', dataClass2(1:NumTestC,:).', dataClass3(1:NumTestC,:).'];
+% trainSet = [dataClass1(NumTestC+1:NumDataC,:).', dataClass2(NumTestC+1:NumDataC,:).', dataClass3(NumTestC+1:NumDataC,:).'];
 
 
 %% Task 1b)
