@@ -100,9 +100,15 @@ for k = 1:NumTrain
     [gMax, cMax] = max(gk);
     confusionTrain(c, cMax) = confusionTrain(c, cMax) + 1;
 end
-% Error rate - training 
+% Error rate - Training 
 errorRateTrain = 1 - trace(confusionTrain)/NumTrain;
 
+disp('Error rate - Training: ');
+disp(errorRateTrain);
+disp('Confusion matrix - Training: ');
+disp(confusionTrain);
+
+% Confusion matrix - Testing
 confusionTest = zeros(C);
 for k = 1:NumTest
     xk = [testSet(:,k); 1];
@@ -113,19 +119,21 @@ for k = 1:NumTest
     
     zk = W*xk + w0;
     gk = sigmoid(zk);
+    
     [gMax, cMax] = max(gk);
     confusionTest(c, cMax) = confusionTest(c, cMax) + 1;
 end
 % Error rate - training 
 errorRateTest = 1 - trace(confusionTest)/NumTest;
 
-figure(3)
-%plotConfusionMx(testLabels, predTest);
-title('Test Cases');
+disp('Error rate - Testing: ');
+disp(errorRateTest);
+disp('Confusion matrix - Testing: ');
+disp(confusionTest);
 
-figure(4)
-%plotConfusionMx(trainLabels, predTrain);
-title("Training Cases");
+disp('MSE: ');
+disp(MSEs(end));
+
 
 
 

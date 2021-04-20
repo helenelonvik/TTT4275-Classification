@@ -79,49 +79,49 @@ for m = 1:M
 end
 
 %% Analysis
-% 
-% conf_matrix_train = zeros(C);
-% for k = 1:train_size
-%     c = floor((k-1)/train_size * C) + 1;
-%     t_k = zeros(C, 1);
-%     t_k(c) = 1;
-% 
-%     x_k = [x_train(k,:)'; 1];
-%     z_k = W*x_k + w_0;
-%     g_k = sigmoid(z_k);
-%     [g_max, c_max] = max(g_k);
-%     conf_matrix_train(c, c_max) = conf_matrix_train(c, c_max) + 1;
-% end
-% error_rate_train = 1 - trace(conf_matrix_train)/train_size;
-% 
-% 
-% conf_matrix_test = zeros(C);
-% for k = 1:test_size
-%     c = floor((k-1)/test_size * C) + 1;
-%     t_k = zeros(C, 1);
-%     t_k(c) = 1;
-% 
-%     x_k = [x_test(k,:)'; 1];
-%     z_k = W*x_k + w_0;
-%     g_k = sigmoid(z_k);
-%     [g_max, c_max] = max(g_k);
-%     conf_matrix_test(c, c_max) = conf_matrix_test(c, c_max) + 1;
-% end
-% error_rate_test = 1 - trace(conf_matrix_test)/test_size;
-% 
-% 
-% disp('Training error rate: ');
-% disp(error_rate_train);
-% disp('Training confusion matrix: ');
-% disp(conf_matrix_train);
-% 
-% disp('Testing error rate: ');
-% disp(error_rate_test);
-% disp('Testing confusion matrix: ');
-% disp(conf_matrix_test);
-% 
-% disp('MSE: ');
-% disp(MSEs(end));
+
+conf_matrix_train = zeros(C);
+for k = 1:train_size
+    c = floor((k-1)/train_size * C) + 1;
+    t_k = zeros(C, 1);
+    t_k(c) = 1;
+
+    x_k = [x_train(k,:)'; 1];
+    z_k = W*x_k + w_0;
+    g_k = sigmoid(z_k);
+    [g_max, c_max] = max(g_k);
+    conf_matrix_train(c, c_max) = conf_matrix_train(c, c_max) + 1;
+end
+error_rate_train = 1 - trace(conf_matrix_train)/train_size;
+
+
+conf_matrix_test = zeros(C);
+for k = 1:test_size
+    c = floor((k-1)/test_size * C) + 1;
+    t_k = zeros(C, 1);
+    t_k(c) = 1;
+
+    x_k = [x_test(k,:)'; 1];
+    z_k = W*x_k + w_0;
+    g_k = sigmoid(z_k);
+    [g_max, c_max] = max(g_k);
+    conf_matrix_test(c, c_max) = conf_matrix_test(c, c_max) + 1;
+end
+error_rate_test = 1 - trace(conf_matrix_test)/test_size;
+
+
+disp('Training error rate: ');
+disp(error_rate_train);
+disp('Training confusion matrix: ');
+disp(conf_matrix_train);
+
+disp('Testing error rate: ');
+disp(error_rate_test);
+disp('Testing confusion matrix: ');
+disp(conf_matrix_test);
+
+disp('MSE: ');
+disp(MSEs(end));
 
 
 %% RESULTS PLOT
