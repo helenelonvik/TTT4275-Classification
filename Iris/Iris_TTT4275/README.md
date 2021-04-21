@@ -10,6 +10,11 @@ c. The confusion matrix and the error rate for both the training and the test se
    This gave: Test error rate = 0.0333 and Training error rate = 0.0222, and the confusion matrices:
 
 Training confusion matrix (30/20):   
+True / Pred|    |    |    |
+-----------|----|----|----|
+           | 30 | 0  | 0  |
+           | 0  | 28 | 2  |
+           | 0  | 0  | 30 |
 [ 30   0   0 ]                  
 [  0  28   2 ]    
 [  0   0  30 ]
