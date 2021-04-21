@@ -10,19 +10,19 @@ The corresponding code can be found in IrisTask.m.
    This gave: Test error rate = 0.0333 and Training error rate = 0.0222, and the confusion matrices:
 
 Training confusion matrix (30/20):   
-           |    |    |    |  
+   T /P    | 1  | 2  | 3  |  
 -----------|----|----|----|
-           | 30 | 0  | 0  |
-           | 0  | 28 | 2  |
-           | 0  | 0  | 30 |
+    1      | 30 | 0  | 0  |
+    2      | 0  | 28 | 2  |
+    3      | 0  | 0  | 30 |
 
 
 Testing confusion matrix (30/20):
-           |    |    |    |  
+   T /P    | 1  | 2  | 3  |   
 -----------|----|----|----|
-           | 20 | 0  | 0  |
-           | 0  | 18 | 2  |
-           | 0  | 0  | 20 |
+    1      | 20 | 0  | 0  |
+    2      | 0  | 18 | 2  |
+    3      | 0  | 0  | 20 |
 
 
 4. Using the last 30 samples for training and the first 20 samples for test. Repeated the training and test phases for this case. 
@@ -30,19 +30,19 @@ Testing confusion matrix (30/20):
 
 
 Training confusion matrix (20/30):
-           |    |    |    |  
+   T /P    | 1  | 2  | 3  |   
 -----------|----|----|----|
-           | 30 | 0  | 0  |
-           | 0  | 28 | 2  |
-           | 0  | 3  | 27 |
+    1      | 30 | 0  | 0  |
+    2      | 0  | 28 | 2  |
+    3      | 0  | 3  | 27 |
 
 
 Testing confusion matrix (20/30):
-           |    |    |    |  
+   T /P    | 1  | 2  | 3  |  
 -----------|----|----|----|
-           | 20 | 0  | 0  |
-           | 0  | 20 | 0  |
-           | 0  | 0  | 20 |
+    1      | 20 | 0  | 0  |
+    2      | 0  | 20 | 0  |
+    3      | 0  | 0  | 20 |
 
 
 e. We can see that the total error rate is the same in both of the cases. 
