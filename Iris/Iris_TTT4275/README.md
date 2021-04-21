@@ -10,6 +10,7 @@ The corresponding code can be found in IrisTask.m.
    This gave: Test error rate = 0.0333 and Training error rate = 0.0222, and the confusion matrices:
 
 Training confusion matrix (30/20):   
+           |    |    |    |  
 -----------|----|----|----|
            | 30 | 0  | 0  |
            | 0  | 28 | 2  |
@@ -17,6 +18,7 @@ Training confusion matrix (30/20):
 
 
 Testing confusion matrix (30/20):
+           |    |    |    |  
 -----------|----|----|----|
            | 20 | 0  | 0  |
            | 0  | 18 | 2  |
@@ -27,7 +29,8 @@ Testing confusion matrix (30/20):
    Thus, we end up with Test error rate = 0 and Training error rate = 0.0556, and the confusion matrices:
 
 
-Training confusion matrix (20/30):  
+Training confusion matrix (20/30):
+           |    |    |    |  
 -----------|----|----|----|
            | 30 | 0  | 0  |
            | 0  | 28 | 2  |
@@ -35,6 +38,7 @@ Training confusion matrix (20/30):
 
 
 Testing confusion matrix (20/30):
+           |    |    |    |  
 -----------|----|----|----|
            | 20 | 0  | 0  |
            | 0  | 20 | 0  |
