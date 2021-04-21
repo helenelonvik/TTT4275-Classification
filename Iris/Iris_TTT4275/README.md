@@ -11,7 +11,7 @@ The corresponding code can be found in IrisTask.m.
 
 Training confusion matrix (30/20):   
    T / P   | 1  | 2  | 3  |  
------------|---------------
+-----------|----|----|----|
     1      | 30 | 0  | 0  |
     2      | 0  | 28 | 2  |
     3      | 0  | 0  | 30 |
@@ -19,7 +19,7 @@ Training confusion matrix (30/20):
 
 Testing confusion matrix (30/20):
    T / P   | 1  | 2  | 3  |   
------------|---------------
+-----------|----|----|----|
     1      | 20 | 0  | 0  |
     2      | 0  | 18 | 2  |
     3      | 0  | 0  | 20 |
@@ -30,8 +30,8 @@ Testing confusion matrix (30/20):
 
 
 Training confusion matrix (20/30):
-   T / P   | 1  | 2  | 3  |   
------------|---------------
+   T / P   | 1    2    3     
+-----------|----|----|----|
     1      | 30 | 0  | 0  |
     2      | 0  | 28 | 2  |
     3      | 0  | 3  | 27 |
@@ -39,11 +39,11 @@ Training confusion matrix (20/30):
 
 Testing confusion matrix (20/30):
    T / P   | 1  | 2  | 3  |  
------------|---------------
+-----------|----|----|----|
     1      | 20 | 0  | 0  |
     2      | 0  | 20 | 0  |
     3      | 0  | 0  | 20 |
 
 
-5. We can see that the total error rate is the same in both of the cases. 
+. We can see that the total error rate is the same in both of the cases. 
    It is also clear that the testing case in d. gives zero error rate. 
