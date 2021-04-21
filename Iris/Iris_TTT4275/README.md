@@ -1,5 +1,4 @@
 # Title: Iris Plants Database
-Updated Sept 21 by Guro Veglo and Helene Lønvik
 
 The corresponding code can be found in IrisTask.m. 
 

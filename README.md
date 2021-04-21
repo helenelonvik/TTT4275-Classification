@@ -1,6 +1,6 @@
 # TTT4275-Classification
 
-A project in the course TTT4275 - Classification. 
+A project in the course TTT4275 - Classification, by [Helene Lønvik](https://github.com/helenelonvik) and [Guro Veglo](https://github.com/guroveglo).
 
 ## Part 1 - The Iris task
 
