@@ -30,7 +30,7 @@ Testing confusion matrix (30/20):
 
 
 Training confusion matrix (20/30):
-   T / P   | 1    2    3     
+   T / P   | 1  | 2  | 3  |  
 -----------|----|----|----|
     1      | 30 | 0  | 0  |
     2      | 0  | 28 | 2  |
