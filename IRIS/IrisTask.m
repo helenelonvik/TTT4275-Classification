@@ -1,7 +1,7 @@
 clear all
 close all
 
-%% Task 1a)
+%% Task 1.1a)
 % Choose the first 30 samples for training and the last 20 samples for testing.
 
 % Defining initial variables
@@ -27,11 +27,11 @@ NumData = NumDataC * C;
 % testSet = [dataClass1(NumTrainC+1:NumDataC,:).', dataClass2(NumTrainC+1:NumDataC,:).', dataClass3(NumTrainC+1:NumDataC,:).'];
 
 % Last 30 data points for testing and the last 30 for training
-% testSet = [dataClass1(1:NumTestC,:).', dataClass2(1:NumTestC,:).', dataClass3(1:NumTestC,:).'];
-% trainSet = [dataClass1(NumTestC+1:NumDataC,:).', dataClass2(NumTestC+1:NumDataC,:).', dataClass3(NumTestC+1:NumDataC,:).'];
+testSet = [dataClass1(1:NumTestC,:).', dataClass2(1:NumTestC,:).', dataClass3(1:NumTestC,:).'];
+trainSet = [dataClass1(NumTestC+1:NumDataC,:).', dataClass2(NumTestC+1:NumDataC,:).', dataClass3(NumTestC+1:NumDataC,:).'];
 
 
-%% Task 1b)
+%% Task 1.11b)
 % Train a linear classifier as described in subchapter 2.4 and 3.2. 
 % Tune the step factor alpha in equation 19 until the training converge
 
@@ -88,7 +88,7 @@ plot(gradsMSE), grid;
 title('MSE Gradient');
 
 
-%% Task 1c) 
+%% Task 1.1c) 
 % Find the confusion matrix and the error rate for both the training and the test set.
 
 % Confusion matrix - training 
