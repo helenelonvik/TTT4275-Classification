@@ -1,15 +1,13 @@
-function [] = plotConfusion(pred, num_test, testlab)
-    known =  zeros(10,num_test);
-
-    for i = 1:num_test
-        l = testlab(i);
-        known(l+1,i) = 1;
-    end
-
+function plotConfusion(knowns, pred)
+  
     % Plot confusion
-    plotconfusion(known,pred);
+    plotconfusion(knowns,pred);
     title({'Confusion Matrix', 'NN Classifier without clustering'});
+    
+    xlabel("Classifier output",'FontSize', 12, 'FontWeight', 'bold');
+    ylabel("True label",'FontSize', 12, 'FontWeight', 'bold');    
     xticklabels({'0','1','2','3','4','5','6','7','8','9'});
     yticklabels({'0','1','2','3','4','5','6','7','8','9'});
 
 end
+

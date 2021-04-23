@@ -1,0 +1,26 @@
+%% Task 2.1a)
+
+% Load data 
+data = load("data_all.mat");    % Includes num_test, num_train, testlab, testv, trainlab, trainv, vec_size
+load('NN_pred.mat');            % Includes the result 
+
+% NN Classifier (comment out when finished running)
+% pred = zeros(10, data.num_test);
+% tic
+% NNpred = NNClassifier(pred, data.num_test, data.trainv, data.testv, data.trainlab);
+% toc
+
+% Confusion Matrix - Comparing NNpred with the knowns. 
+figure(1)
+knowns = plotConfusion(testlab, NN_pred);
+title("NN without clustering");
+
+% Error Rate 
+% C = confusionmat(data.testlab, knowns)
+% err_classification = (data.num_test - trace(C))/(data.num_test);
+% disp('Error Rate: ');
+% disp(errorRate);
+
+
+
+
