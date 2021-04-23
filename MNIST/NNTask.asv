@@ -8,50 +8,26 @@
 
 % Load data 
 data = load("data_all.mat");  % Includes num_test, num_train, testlab, testv, trainlab, trainv, vec_size
-load('NN_pred.m');            % Includes the result 
+load('NN_pred.mat');            % Includes the result 
 
 % Nearest Neighbourhood Classifier
-
+% disp('Start NN Classifier');
+% pred = zeros(10, data.num_test);
 % tic
 % NNpred = NNClassifier(pred, data.num_test, data.trainv, data.testv, data.trainlab);
 % toc
+% disp('End NN Classifier');
 
-% Find the confusion matrix and the error rate for the test set.
+% Confusion Matrix - Comparing NNpred with the knowns. 
 
-confusionMx = zeros(10);
-for i = 1:num_test
-    confusionMx(NNpred(i)+1,data.testlab(i)+1) = confusionMx(NNpred(i)+1,data.testlab(i)+1)+1;
-end
-errorRate = 1 - trace(confusionMx)/data.num_test;
-disp('Error Rate: ');
-disp(errorRate);
+plotConfusion(pred, data.num_test, data.testlab)
 
-
-%Generates targets for plotconfusion function
-targets = zeros(10, size(predictions,2));
-for k = 1:size(predictions,2)
-    targets(labels(k)+1,k) = 1;
-end
-
-targetsVec = (testlab+1)';
-outputsVec = (NN_tags+1)';
-
-num_data = 10000;
-% Convert this data to a [numClasses x data_length] matrix
-targets = zeros(10,num_data);
-outputs = zeros(10,num_data);
-targetsIdx = sub2ind(size(targets), targetsVec, 1:num_data);
-outputsIdx = sub2ind(size(outputs), outputsVec, 1:num_data);
-targets(targetsIdx) = 1;
-outputs(outputsIdx) = 1;
-
-%Plots confusion matrix
-plotconfusion(predictions, targets);
-xlabel("Classifier output",'FontSize', 12, 'FontWeight', 'bold');
-ylabel("True label",'FontSize', 12, 'FontWeight', 'bold');
-xticklabels({'0','1','2','3','4','5','6','7','8','9'});
-yticklabels({'0','1','2','3','4','5','6','7','8','9'});
-
+% Error Rate 
+confusionMx= zeros(10);
+[errorRate] = errorRate(confusionMx, NN_pred, data.num_test, datatestlab)
+% trace calculates the sum of the diagonal elements
+disp('Error rate: ');
+disp(error_rate);
 
 % The data sets should preferably be split up into chunks ofimages (for example 1000) in order to a) avoid 
 % too big distance matrixes b) avoid using excessive time (as when classifying a single image at a time)
