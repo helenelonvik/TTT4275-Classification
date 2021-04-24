@@ -43,7 +43,7 @@ dataClass2(:,1) = [];
 dataClass3(:,1) = [];
 D = 2;
 % removing feature 3
-dataClass1(:,2) = []; %original feature 3 is now in column 2
+dataClass1(:,2) = []; %
 dataClass2(:,2) = [];
 dataClass3(:,2) = [];
 D = 1;
