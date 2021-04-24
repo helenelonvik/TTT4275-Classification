@@ -16,7 +16,7 @@ sgtitle("Missclassified Pictures")
 for i = 1:size(missInd, 2)
     subp = 220 + i;
     subplot(subp);
-    plotMissClassified(missInd(i), testlab, pred_NN, testv);
+    plotMissClassified(missInd(i), testlab, NN_pred, testv);
 end
 
 figure(2)
