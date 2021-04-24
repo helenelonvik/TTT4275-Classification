@@ -7,8 +7,8 @@ load('NN_pred.mat');
 
 % Indices of missclassified and correctly classified images 
 [corrClassifiedArray, missClassifiedArray] = classifiedArrays(testlab, NN_pred, testv);
-missC = [116,196,242,382];          % Indices found in missClassifiedArray
-corrC = [110,192,232,380];        % Indices found in corrClassifiedArray
+missC = [5,176,246,248];          % Indices found in missClassifiedArray
+corrC = [28,275,317,4298];        % Indices found in corrClassifiedArray
 
 x = zeros(28,28);
 

@@ -7,10 +7,10 @@ load('NN_pred.mat');            % Includes the result
 numClasses = 10; 
 
 % NN Classifier (comment out when finished running)
-pred = zeros(10, data.num_test);
-tic
-[NN_pred, confusionMx] = NNClassifier(pred, data.num_test, data.trainv, data.testv, data.trainlab, data.testlab);
-toc
+% pred = zeros(10, data.num_test);
+% tic
+% [NN_pred, confusionMx] = NNClassifier(pred, data.num_test, data.trainv, data.testv, data.trainlab, data.testlab);
+% toc
 
 % Confusion Matrix - Comparing NNpred with the knowns. 
 knowns =  zeros(10, size(NN_pred,2));
