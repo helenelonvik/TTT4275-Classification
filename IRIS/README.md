@@ -1,6 +1,6 @@
 # Title: Iris Plants Database
 
-The corresponding code can be found in IrisTask.m. 
+This task includes a function for classifying iris flower. The corresponding code can be found in IrisTask.m. The first part has focus on design/training and generalization. The second part has focus on features and linear separability.
 
 ## Design/training and generalization
 1. 30 samples for training and the last 20 samples for testing was defined. 
@@ -10,7 +10,7 @@ The corresponding code can be found in IrisTask.m.
    This gave: Test error rate = 0.0333 and Training error rate = 0.0222, and the confusion matrices:
 
 Training confusion matrix (30/20):   
-   T /P    | 1  | 2  | 3  |  
+   T / P   | 1  | 2  | 3  |  
 -----------|----|----|----|
     1      | 30 | 0  | 0  |
     2      | 0  | 28 | 2  |
@@ -18,7 +18,7 @@ Training confusion matrix (30/20):
 
 
 Testing confusion matrix (30/20):
-   T /P    | 1  | 2  | 3  |   
+   T / P   | 1  | 2  | 3  |   
 -----------|----|----|----|
     1      | 20 | 0  | 0  |
     2      | 0  | 18 | 2  |
@@ -30,7 +30,7 @@ Testing confusion matrix (30/20):
 
 
 Training confusion matrix (20/30):
-   T /P    | 1  | 2  | 3  |   
+   T / P   | 1  | 2  | 3  |  
 -----------|----|----|----|
     1      | 30 | 0  | 0  |
     2      | 0  | 28 | 2  |
@@ -38,12 +38,12 @@ Training confusion matrix (20/30):
 
 
 Testing confusion matrix (20/30):
-   T /P    | 1  | 2  | 3  |  
+   T / P   | 1  | 2  | 3  |  
 -----------|----|----|----|
     1      | 20 | 0  | 0  |
     2      | 0  | 20 | 0  |
     3      | 0  | 0  | 20 |
 
 
-e. We can see that the total error rate is the same in both of the cases. 
+. We can see that the total error rate is the same in both of the cases. 
    It is also clear that the testing case in d. gives zero error rate. 

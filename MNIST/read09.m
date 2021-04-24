@@ -42,7 +42,7 @@ trainlab=zeros(num_train,1);
 
 for k = 1:num_train
 	trainlab(k) =fread(fid,1,'uchar','ieee-be');
-end
+end 
 
 fclose(fid);
 
