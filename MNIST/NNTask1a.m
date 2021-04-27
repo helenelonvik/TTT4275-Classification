@@ -25,6 +25,9 @@ title("NN without clustering");
 % Error Rate   OBS Må fikse Error Rate
 % errorRate = (num_test-trace(confusionMx))/num_test;
 
+
+conf_matrix = []
+
 %% Task 2.1b) 
 
 

@@ -14,6 +14,6 @@ for i = 1:num_test
     D = dist(clusters, testv(i,:).');
     [~,index] = min(D);
     number = clusterClass(index);
-    predictedNumber(number+1,i) = 1;    
+    predictedNumbers(number+1,i) = 1;    
 end
 toc
