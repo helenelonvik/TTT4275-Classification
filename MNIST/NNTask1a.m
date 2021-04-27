@@ -7,9 +7,9 @@ load('NN_pred.mat');            % Includes the result
 numClasses = 10; 
 
 % NN Classifier (comment out when finished running)
-% pred = zeros(10, data.num_test);
+pred = zeros(10, data.num_test);
 % tic
-% [NN_pred, confusionMx] = NNClassifier(pred, data.num_test, data.trainv, data.testv, data.trainlab, data.testlab);
+% [NN_pred] = NNClassifier(pred, data.num_test, data.trainv, data.testv, data.trainlab);
 % toc
 
 % Confusion Matrix - Comparing NNpred with the knowns. 
@@ -23,7 +23,7 @@ plotConfusion(knowns, NN_pred);
 title("NN without clustering");
 
 % Error Rate   OBS Må fikse Error Rate
-%errorRate = (num_test-trace(confusionMx))/num_test;
+% errorRate = (num_test-trace(confusionMx))/num_test;
 
 %% Task 2.1b) 
 
