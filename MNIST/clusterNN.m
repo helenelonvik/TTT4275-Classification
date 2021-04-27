@@ -2,8 +2,6 @@ close all
 clear
 clc
 
-%Find the confusion matrix and the error rate for the NN classifier using these M = 64 templates pr class. 
-
 load('data_all.mat');
 load('clusters.mat');
 load('confClusterNN.mat');

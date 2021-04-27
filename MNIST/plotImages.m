@@ -1,3 +1,4 @@
+%% Task 2.1 b) and c)
 clear all
 close all
 

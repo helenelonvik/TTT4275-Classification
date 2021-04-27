@@ -1,4 +1,4 @@
-%% 2a clustering of 600 training vectors for each class into M = 64 clusters
+%% Clustering of 600 training vectors for each class into M = 64 clusters
 close all
 clear
 clc
@@ -18,8 +18,6 @@ for i = 0:9
     clusterClass(M*i+1:M*(i+1)) = i*ones(M,1);
     fprintf('Class %d clustered\n',i);
 end
-
-
 toc
 
 save('clusters.mat', 'clusters', 'clusterClass');
