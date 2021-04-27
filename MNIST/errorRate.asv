@@ -1,5 +1,0 @@
-function errorRate(num_test, conf)
-    errorRate = (num_test-trace(confClusterNN))/num_test;
-    disp('Error Rate - NN with clustering:')
-    disp(errorRate);
-end
