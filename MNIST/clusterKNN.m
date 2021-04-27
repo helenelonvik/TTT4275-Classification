@@ -7,10 +7,8 @@ classes = 10;
 
 tic
 predictedNumbers = zeros(classes, num_test);
-%[i,idx] = knnsearch(clusters, testv(k,:), 'K', K)
 for i = 1:num_test
-    %D = dist(clusters, testv(i,:).');
-    idx = knnsearch(clusters, testv(k,:), 'K', K);     % get index of the 7 closest objects
+    idx = knnsearch(clusters, testv(i,:), 'K', K);     % get index of the 7 closest objects
     countNumbers = zeros(classes,1);
     for j = 1:K
         number = testlab(idx(j));
@@ -21,3 +19,11 @@ for i = 1:num_test
     predictedNumbers(index,i) = 1;   
 end
 toc
+
+knowns =  zeros(10, num_test);
+for k = 1:num_test
+    knowns(testlab(k)+1,k) = 1;
+end
+
+plotConfusion(knowns, predictedNumbers)
+

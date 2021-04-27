@@ -14,6 +14,13 @@ for i = 1:num_test
     D = dist(clusters, testv(i,:).');
     [~,index] = min(D);
     number = clusterClass(index);
-    predictedNumber(number+1,i) = 1;    
+    predictedNumbers(number+1,i) = 1;    
 end
 toc
+
+knowns =  zeros(10, size(NN_pred,2));
+for k = 1:size(NN_pred,2)
+    knowns(data.testlab(k)+1,k) = 1;
+end
+
+plotConfusion(knowns, predictedNumbers)
