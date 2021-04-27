@@ -11,7 +11,7 @@ for i = 1:num_test
     idx = knnsearch(clusters, testv(i,:), 'K', K);     % get index of the 7 closest objects
     countNumbers = zeros(classes,1);
     for j = 1:K
-        number = testlab(idx(j));
+        number = clusterClass(idx(j));
         countNumbers(number+1) = countNumbers(number+1) + 1;
     end
     
