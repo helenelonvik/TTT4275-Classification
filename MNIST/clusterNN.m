@@ -17,3 +17,10 @@ for i = 1:num_test
     predictedNumbers(number+1,i) = 1;    
 end
 toc
+
+knowns =  zeros(10, size(NN_pred,2));
+for k = 1:size(NN_pred,2)
+    knowns(data.testlab(k)+1,k) = 1;
+end
+
+plotConfusion(knowns, predictedNumbers)
