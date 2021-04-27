@@ -1,8 +1,8 @@
-function plotConfusion(knowns, pred)
+function plotConfusion(knowns, pred, arg)
   
     % Plot confusion
     plotconfusion(knowns,pred);
-    title({'Confusion Matrix', 'NN Classifier without clustering'});
+    title({'Confusion Matrix', arg});
     
     xlabel("Classifier output",'FontSize', 12, 'FontWeight', 'bold');
     ylabel("True label",'FontSize', 12, 'FontWeight', 'bold');    

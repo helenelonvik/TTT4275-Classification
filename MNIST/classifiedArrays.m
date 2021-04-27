@@ -27,7 +27,5 @@ function [corrClassifiedArray, missClassifiedArray] = classifiedArrays(labels,pr
             index = index + 1;
         end
     end
-   
-
 
 end
