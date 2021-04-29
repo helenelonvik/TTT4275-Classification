@@ -40,6 +40,4 @@ histogram(dataClass3(:,4),numBins)
 xlabel("Petal Width")
 legend('Setesa','Versicolor','Verginica')
 
-%% We want to remove sepal with because it has the most overlap
-
 

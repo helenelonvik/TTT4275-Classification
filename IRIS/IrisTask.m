@@ -21,35 +21,32 @@ NumTest = NumTestC * C;
 NumDataC = 50;
 NumData = NumDataC * C;
 
+%% Task 2a)
+
+% Removing unwanted features (2, 1, 3)
+dataClass1(:,2) = [];
+dataClass2(:,2) = [];
+dataClass3(:,2) = [];
+D = D-1;
+% Removing feature 1
+dataClass1(:,1) = [];
+dataClass2(:,1) = [];
+dataClass3(:,1) = [];
+D = D-1;
+% Removing feature 3
+dataClass1(:,2) = []; %original feature 3 is now in column 2
+dataClass2(:,2) = [];
+dataClass3(:,2) = [];
+D = D-1;
+
 
 % First 30 data points for training and the last 20 for testing
 % trainSet = [dataClass1(1:NumTrainC,:).', dataClass2(1:NumTrainC,:).', dataClass3(1:NumTrainC,:).'];
 % testSet = [dataClass1(NumTrainC+1:NumDataC,:).', dataClass2(NumTrainC+1:NumDataC,:).', dataClass3(NumTrainC+1:NumDataC,:).'];
 
-% Last 30 data points for testing and the last 30 for training
-%testSet = [dataClass1(1:NumTestC,:).', dataClass2(1:NumTestC,:).', dataClass3(1:NumTestC,:).'];
-%trainSet = [dataClass1(NumTestC+1:NumDataC,:).', dataClass2(NumTestC+1:NumDataC,:).', dataClass3(NumTestC+1:NumDataC,:).'];
-
-
-%%Task 2a 
-% removing unwanted features (2, 1, 3)
-dataClass1(:,2) = [];
-dataClass2(:,2) = [];
-dataClass3(:,2) = [];
-D = 3;
-% removing feature 1
-dataClass1(:,1) = [];
-dataClass2(:,1) = [];
-dataClass3(:,1) = [];
-D = 2;
-% removing feature 3
-dataClass1(:,2) = []; %original feature 3 is now in column 2
-dataClass2(:,2) = [];
-dataClass3(:,2) = [];
-D = 1;
-% use first 30 samples for training and 20 for test
-trainSet = [dataClass1(1:NumTrainC,:).', dataClass2(1:NumTrainC,:).', dataClass3(1:NumTrainC,:).'];
-testSet = [dataClass1(NumTrainC+1:NumDataC,:).', dataClass2(NumTrainC+1:NumDataC,:).', dataClass3(NumTrainC+1:NumDataC,:).'];
+% Last 30 data points for training and the first 20 for testing
+testSet = [dataClass1(1:NumTestC,:).', dataClass2(1:NumTestC,:).', dataClass3(1:NumTestC,:).'];
+trainSet = [dataClass1(NumTestC+1:NumDataC,:).', dataClass2(NumTestC+1:NumDataC,:).', dataClass3(NumTestC+1:NumDataC,:).'];
 
 
 %% Task 1.11b)
@@ -73,7 +70,6 @@ gradMSE = @(gk,tk,xk) ((gk-tk).*gk.*(1-gk))*xk.';
 
 % Training the linear classifier
 for m = 1:NumIterations
-    
     grad = 0;
     MSE = 0;
     
@@ -84,7 +80,7 @@ for m = 1:NumIterations
         tk = zeros(C, 1);
         tk(c) = 1;                          % Defining targets (MSE requires target values at the output)
         
-        zk = W*xk + w0;
+        zk = W*xk + w0;                     % Discriminant function
         gk = sigmoid(zk);
         
         grad = grad + gradMSE(gk,tk,xk);    % Summing up the elements of gradMSE
@@ -110,7 +106,7 @@ title('MSE Gradient');
 
 
 %% Task 1.1c) 
-% Find the confusion matrix and the error rate for both the training and the test set.
+% Confusion matrix and error rate for both the training and the test set.
 
 % Confusion matrix - training 
 confusionTrain = zeros(C);
@@ -150,6 +146,7 @@ for k = 1:NumTest
     [gMax, cMax] = max(gk);
     confusionTest(c, cMax) = confusionTest(c, cMax) + 1;
 end
+
 % Error rate - training 
 errorRateTest = 1 - trace(confusionTest)/NumTest;
 
@@ -161,6 +158,29 @@ disp(confusionTest);
 disp('MSE: ');
 disp(MSEs(end));
 
+pred_test =  zeros(C, size(testSet,2));
+for k = 1:size(testSet,2)
+    xk = [testSet(:,k);1];
+    [~, class] = max(W*xk);
+    pred_test(class, k) = 1;
+end
 
 
+%Testing classifier on training cases
+pred_train = zeros(C, size(trainSet,2));
+for k = 1:size(trainSet,2)
+    xk = [trainSet(:,k);1];
+    [~, class] = max(W*xk);
+    pred_train(class, k) = 1;
+end
 
+test_labels = [ones(1, NumTestC), 2*ones(1,NumTestC),3*ones(1,NumTestC)];
+train_labels = [ones(1, NumTrainC), 2*ones(1,NumTrainC),3*ones(1,NumTrainC)];
+
+figure(1)
+plotConfIris(test_labels, pred_test);
+title('Test Cases');
+
+figure(2)
+plotConfIris(train_labels, pred_train);
+title("Training Cases");
