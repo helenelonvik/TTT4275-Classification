@@ -7,9 +7,9 @@ numClasses = 10;
 
 % NN Classifier (Comment out when finished - and save NN_pred )
 pred = zeros(10, num_test);
-tic
-[NN_pred] = NNClassifier(pred, num_test, trainv, testv, trainlab);
-toc
+% tic
+% [NN_pred] = NNClassifier(pred, num_test, trainv, testv, trainlab);
+% toc
 
 % Confusion Matrix - Comparing NNpred with the knowns. 
 knowns =  zeros(10, size(NN_pred,2));
@@ -22,9 +22,9 @@ figure(1)
 plotConfusion(knowns, NN_pred,"NN without clustering");
 
 % Error Rate 
-% errorRate = (num_test-trace(confusionNN))/num_test;
-% disp('Error Rate - NN without clustering:')
-% disp(errorRate);
+errorRate = (num_test-trace(confusionNN))/num_test;
+disp('Error Rate - NN without clustering:')
+disp(errorRate);
 
-errorRate = errorRate(num_test, confusionNN, num_test, 'Confusion NN');
+% errorRate = errorRate(num_test, confusionNN, num_test, 'Confusion NN');
 

@@ -22,31 +22,31 @@ NumDataC = 50;
 NumData = NumDataC * C;
 
 %% Task 2a)
-
-% Removing unwanted features (2, 1, 3)
-dataClass1(:,2) = [];
-dataClass2(:,2) = [];
-dataClass3(:,2) = [];
-D = D-1;
-% Removing feature 1
-dataClass1(:,1) = [];
-dataClass2(:,1) = [];
-dataClass3(:,1) = [];
-D = D-1;
-% Removing feature 3
-dataClass1(:,2) = []; %original feature 3 is now in column 2
-dataClass2(:,2) = [];
-dataClass3(:,2) = [];
-D = D-1;
+% 
+%Removing unwanted features (2, 1, 3)
+% dataClass1(:,2) = [];
+% dataClass2(:,2) = [];
+% dataClass3(:,2) = [];
+% D = D-1;
+% % Removing feature 1
+% dataClass1(:,1) = [];
+% dataClass2(:,1) = [];
+% dataClass3(:,1) = [];
+% D = D-1;
+% % % Removing feature 3
+% dataClass1(:,2) = []; %original feature 3 is now in column 2
+% dataClass2(:,2) = [];
+% dataClass3(:,2) = [];
+% D = D-1;
 
 
 % First 30 data points for training and the last 20 for testing
-% trainSet = [dataClass1(1:NumTrainC,:).', dataClass2(1:NumTrainC,:).', dataClass3(1:NumTrainC,:).'];
-% testSet = [dataClass1(NumTrainC+1:NumDataC,:).', dataClass2(NumTrainC+1:NumDataC,:).', dataClass3(NumTrainC+1:NumDataC,:).'];
+trainSet = [dataClass1(1:NumTrainC,:).', dataClass2(1:NumTrainC,:).', dataClass3(1:NumTrainC,:).'];
+testSet = [dataClass1(NumTrainC+1:NumDataC,:).', dataClass2(NumTrainC+1:NumDataC,:).', dataClass3(NumTrainC+1:NumDataC,:).'];
 
 % Last 30 data points for training and the first 20 for testing
-testSet = [dataClass1(1:NumTestC,:).', dataClass2(1:NumTestC,:).', dataClass3(1:NumTestC,:).'];
-trainSet = [dataClass1(NumTestC+1:NumDataC,:).', dataClass2(NumTestC+1:NumDataC,:).', dataClass3(NumTestC+1:NumDataC,:).'];
+% testSet = [dataClass1(1:NumTestC,:).', dataClass2(1:NumTestC,:).', dataClass3(1:NumTestC,:).'];
+% trainSet = [dataClass1(NumTestC+1:NumDataC,:).', dataClass2(NumTestC+1:NumDataC,:).', dataClass3(NumTestC+1:NumDataC,:).'];
 
 
 %% Task 1.11b)
@@ -59,6 +59,12 @@ NumIterations = 3000;      % Breaking condition -  Obs: Could have used tol = 0.
                                                 
 MSEs = zeros(1, NumIterations);             % Training variable
 gradsMSE = zeros(1, NumIterations);         % Training variable
+
+t1 = [1 0 0].';
+t2 = [0 1 0].';
+t3 = [0 0 1].';
+targets = [repmat(t1, 1, NumTrainC), repmat(t2,1,NumTrainC),repmat(t3,1,NumTrainC)];
+
 
 W0 = zeros(C, D);
 w0 = zeros(C, 1);
@@ -76,9 +82,7 @@ for m = 1:NumIterations
     for k = 1:size(trainSet,2)
         xk = [trainSet(:,k); 1];
         
-        c = floor((k-1)/NumTrain * C) + 1;  % Increases once per iteration
-        tk = zeros(C, 1);
-        tk(c) = 1;                          % Defining targets (MSE requires target values at the output)
+        tk = targets(:,k);
         
         zk = W*xk + w0;                     % Discriminant function
         gk = sigmoid(zk);

@@ -8,7 +8,7 @@ load('NN_pred.mat');
 
 % Indices of missclassified and correctly classified images 
 [corrClassifiedArray, missClassifiedArray] = classifiedArrays(testlab, NN_pred, testv);
-missC = [116,196,242,382];          % Indices found in missClassifiedArray
+missC = [116,196,242,269];          % Indices found in missClassifiedArray
 corrC = [110,192,232,380];          % Indices found in corrClassifiedArray
 
 x = zeros(28,28);
@@ -30,3 +30,5 @@ for i = 1:size(corrC, 2)
     subplot(subp);
     image(rot90(flip(x),3));
 end
+
+
